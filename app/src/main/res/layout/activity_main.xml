@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="?"
+        android:text="?!"
         android:background="#ffa"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
