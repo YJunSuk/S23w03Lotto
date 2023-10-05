@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import kr.ac.kumoh.ce.s20200694.S23w03lotto.databinding.ActivityMainBinding
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 
@@ -30,15 +31,15 @@ class MainActivity : AppCompatActivity() {
 //        txtNum[5] = main.num6
 
         model = ViewModelProvider(this)[LottoViewModel::class.java]
-        txtNum.forEachIndexed { index, textView ->
-            textView?.text = model.numbers.value!![index].toString()
-        }
 
-        main.btnGenerate.setOnClickListener {
-            model.generate()
+        model.numbers.observe(this, Observer{
             txtNum.forEachIndexed { index, textView ->
                 textView?.text = model.numbers.value!![index].toString()
             }
+        })
+        main.btnGenerate.setOnClickListener {
+            model.generate()
+
 //            main.num1.text = model.numbers[0].toString()
 //            main.num2.text = model.numbers[1].toString()
 //            main.num3.text = model.numbers[2].toString()
