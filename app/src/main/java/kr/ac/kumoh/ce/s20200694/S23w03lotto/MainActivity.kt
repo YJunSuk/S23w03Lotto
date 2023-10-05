@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         model = ViewModelProvider(this)[LottoViewModel::class.java]
         txtNum.forEachIndexed { index, textView ->
-            textView?.text = model.numbers[index].toString()
+            textView?.text = model.numbers.value!![index].toString()
         }
 
         main.btnGenerate.setOnClickListener {
             model.generate()
             txtNum.forEachIndexed { index, textView ->
-                textView?.text = model.numbers[index].toString()
+                textView?.text = model.numbers.value!![index].toString()
             }
 //            main.num1.text = model.numbers[0].toString()
 //            main.num2.text = model.numbers[1].toString()
